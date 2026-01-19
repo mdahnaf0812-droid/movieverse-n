@@ -1,54 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Movie Hub</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Netflix Hub</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header class="navbar">
+<!-- NAV -->
+<div class="navbar">
   <div class="logo">NETFLIX HUB</div>
-  <input type="text" id="search" placeholder="Search movies, series...">
-</header>
+  <input type="text" id="searchInput" placeholder="Search movies, series..." />
+</div>
 
-<section class="hero">
+<!-- HERO -->
+<div class="hero">
   <h1>Unlimited movies, series & cartoons</h1>
   <p>Watch anywhere. Anytime.</p>
-</section>
+</div>
 
-<section class="row">
+<!-- TRENDING -->
+<div class="row">
   <h2>🔥 Trending Now</h2>
-  <div class="cards" id="movieList"></div>
-</section>
+  <div class="cards" id="movieList">
+    <!-- JS will load cards -->
+  </div>
+</div>
 
-<script src="data.js"></script>
-<script>
-const list = document.getElementById("movieList");
-const search = document.getElementById("search");
-
-function render(data){
-  list.innerHTML="";
-  data.forEach(m=>{
-    list.innerHTML+=`
-      <a class="card" href="movie.html?title=${encodeURIComponent(m.title)}&poster=${encodeURIComponent(m.poster)}&rating=${m.rating}&category=${m.category}&desc=${encodeURIComponent(m.desc)}&trailer=${encodeURIComponent(m.trailer)}">
-        <img src="${m.poster}">
-        <div class="overlay">
-          <h3>${m.title}</h3>
-          ⭐ ${m.rating}
-        </div>
-      </a>
-    `;
-  });
-}
-
-render(movies);
-
-search.oninput=()=>{
-  const v=search.value.toLowerCase();
-  render(movies.filter(m=>m.title.toLowerCase().includes(v)));
-};
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>
