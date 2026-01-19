@@ -1,25 +1,38 @@
 const grid = document.getElementById("movieGrid");
-const search = document.querySelector("input");
+const searchInput = document.getElementById("searchInput");
 
 function showMovies(list) {
   grid.innerHTML = "";
   list.forEach(m => {
-    grid.innerHTML += `
-      <a class="movie-card" href="movie.html?title=${encodeURIComponent(m.title)}&poster=${encodeURIComponent(m.poster)}&rating=${m.rating}&category=${m.category}&desc=${encodeURIComponent(m.desc)}&trailer=${encodeURIComponent(m.trailer)}">
-        <img src="${m.poster}">
+    const card = document.createElement("div");
+    card.className = "card";
+    card.innerHTML = `
+      <img src="${m.poster}" />
+      <div class="info">
         <h3>${m.title}</h3>
         <p>⭐ ${m.rating}</p>
-      </a>
+      </div>
     `;
+    card.onclick = () => {
+      const url =
+        `movie.html?title=${encodeURIComponent(m.title)}` +
+        `&poster=${encodeURIComponent(m.poster)}` +
+        `&rating=${encodeURIComponent(m.rating)}` +
+        `&category=${encodeURIComponent(m.category)}` +
+        `&desc=${encodeURIComponent(m.desc)}` +
+        `&trailer=${encodeURIComponent(m.trailer)}`;
+      window.location.href = url;
+    };
+    grid.appendChild(card);
   });
 }
 
 showMovies(movies);
 
-search.addEventListener("input", e => {
-  const value = e.target.value.toLowerCase();
+searchInput.addEventListener("input", () => {
+  const val = searchInput.value.toLowerCase();
   const filtered = movies.filter(m =>
-    m.title.toLowerCase().includes(value)
+    m.title.toLowerCase().includes(val)
   );
   showMovies(filtered);
 });
