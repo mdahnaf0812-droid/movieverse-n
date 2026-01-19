@@ -1,26 +1,63 @@
-const data = [
-  {
-    title: "Avengers",
-    rating: "4.5",
-    category: "Movie",
-    img: "https://m.media-amazon.com/images/I/81ExhpBEbHL._AC_SL1500_.jpg",
-    desc: "Earth's mightiest heroes must come together to save the world.",
-    trailer: "https://www.youtube.com/watch?v=eOrNdBpGMv8"
-  },
+const movies = [
   {
     title: "Spider-Man",
-    rating: "4.7",
+    poster: "https://i.imgur.com/8QZ7QZy.jpg",
+    rating: 4.7,
     category: "Movie",
-    img: "https://m.media-amazon.com/images/I/71niXI3lxlL._AC_SL1024_.jpg",
     desc: "A young hero learns responsibility with great power.",
     trailer: "https://www.youtube.com/watch?v=t06RUxPbp_c"
   },
   {
+    title: "Avengers Endgame",
+    poster: "https://i.imgur.com/EuC4C9S.jpg",
+    rating: 4.9,
+    category: "Movie",
+    desc: "Earth’s mightiest heroes unite to undo the snap.",
+    trailer: "https://www.youtube.com/watch?v=TcMBFSGVi1c"
+  },
+  {
     title: "Naruto",
-    rating: "4.8",
+    poster: "https://i.imgur.com/J5LVHEL.jpg",
+    rating: 4.8,
     category: "Anime",
-    img: "https://upload.wikimedia.org/wikipedia/en/9/94/NarutoCoverTankobon1.jpg",
-    desc: "A ninja who dreams of becoming Hokage.",
+    desc: "A ninja dreams of becoming the strongest leader.",
     trailer: "https://www.youtube.com/watch?v=-G9BqkgZXRA"
   }
 ];
+
+const movieList = document.getElementById("movieList");
+const searchInput = document.getElementById("searchInput");
+
+function showMovies(list) {
+  movieList.innerHTML = "";
+
+  list.forEach(movie => {
+    const card = document.createElement("a");
+    card.className = "movie-card";
+    card.href = `movie.html?title=${encodeURIComponent(movie.title)}
+    &poster=${encodeURIComponent(movie.poster)}
+    &rating=${movie.rating}
+    &category=${movie.category}
+    &desc=${encodeURIComponent(movie.desc)}
+    &trailer=${encodeURIComponent(movie.trailer)}`;
+
+    card.innerHTML = `
+      <img src="${movie.poster}" />
+      <h3>${movie.title}</h3>
+      <p>⭐ ${movie.rating}</p>
+    `;
+
+    movieList.appendChild(card);
+  });
+}
+
+showMovies(movies);
+
+searchInput.addEventListener("input", () => {
+  const value = searchInput.value.toLowerCase();
+  const filtered = movies.filter(movie =>
+    movie.title.toLowerCase().includes(value) ||
+    movie.category.toLowerCase().includes(value)
+  );
+  showMovies(filtered);
+});
