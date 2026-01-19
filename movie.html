@@ -1,25 +1,53 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Details</title>
-<link rel="stylesheet" href="style.css">
+<title>Movie Details</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  background:#000;
+  color:#fff;
+  font-family:Arial;
+  padding:20px;
+}
+img {
+  width:100%;
+  max-width:300px;
+  border-radius:12px;
+}
+button {
+  margin-top:15px;
+  padding:10px 20px;
+  background:red;
+  color:white;
+  border:none;
+  border-radius:6px;
+  font-size:16px;
+}
+</style>
 </head>
+
 <body>
 
-<div class="hero" id="bg">
-  <h1 id="title"></h1>
-  <p id="desc"></p>
-  <a id="trailer" target="_blank" style="color:#e50914;font-size:18px">▶ Watch Trailer</a>
-</div>
+<h1 id="title"></h1>
+<img id="poster">
+<p id="rating"></p>
+<p id="desc"></p>
+<button id="trailerBtn">▶ Watch Trailer</button>
 
 <script>
-const p=new URLSearchParams(location.search);
-document.getElementById("title").innerText=p.get("title");
-document.getElementById("desc").innerText=p.get("desc");
-document.getElementById("trailer").href=p.get("trailer");
-document.getElementById("bg").style.backgroundImage=
-`linear-gradient(to top,#000,rgba(0,0,0,.5)),url(${p.get("poster")})`;
+const params = new URLSearchParams(window.location.search);
+
+document.getElementById("title").innerText = params.get("title");
+document.getElementById("poster").src = params.get("poster");
+document.getElementById("rating").innerText = "⭐ " + params.get("rating");
+document.getElementById("desc").innerText = params.get("desc");
+
+document.getElementById("trailerBtn").onclick = () => {
+  window.open(params.get("trailer"), "_blank");
+};
 </script>
 
 </body>
