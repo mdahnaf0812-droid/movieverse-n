@@ -1,34 +1,37 @@
-const grid = document.getElementById("movieGrid");
-const searchInput = document.getElementById("searchInput");
+const movies = [
+  {
+    title: "Spider-Man",
+    poster: "https://i.imgur.com/8UG2ZQp.jpg",
+    rating: "4.7"
+  },
+  {
+    title: "Avengers Endgame",
+    poster: "https://i.imgur.com/e1hLQ2k.jpg",
+    rating: "4.8"
+  }
+];
 
-function showMovies(list) {
-  grid.innerHTML = "";
-  list.forEach(m => {
-    const card = document.createElement("div");
-    card.className = "card";
-    card.innerHTML = `
-      <img src="${m.poster}" onerror="this.src='https://via.placeholder.com/300x450?text=No+Image'" />
+const movieList = document.getElementById("movieList");
+
+function loadMovies(list){
+  movieList.innerHTML = "";
+  list.forEach(movie => {
+    movieList.innerHTML += `
+      <div class="card">
+        <img src="${movie.poster}">
+        <div class="overlay">
+          <h3>${movie.title}</h3>
+          <span>⭐ ${movie.rating}</span>
+        </div>
+      </div>
     `;
-    card.onclick = () => {
-      const url =
-        `movie.html?title=${encodeURIComponent(m.title)}` +
-        `&poster=${encodeURIComponent(m.poster)}` +
-        `&rating=${encodeURIComponent(m.rating)}` +
-        `&category=${encodeURIComponent(m.category)}` +
-        `&desc=${encodeURIComponent(m.desc)}` +
-        `&trailer=${encodeURIComponent(m.trailer)}`;
-      window.location.href = url;
-    };
-    grid.appendChild(card);
   });
 }
 
-showMovies(movies);
+loadMovies(movies);
 
-searchInput.addEventListener("input", () => {
-  const val = searchInput.value.toLowerCase();
-  const filtered = movies.filter(m =>
-    m.title.toLowerCase().includes(val)
-  );
-  showMovies(filtered);
+document.getElementById("searchInput").addEventListener("input", e => {
+  const value = e.target.value.toLowerCase();
+  const filtered = movies.filter(m => m.title.toLowerCase().includes(value));
+  loadMovies(filtered);
 });
