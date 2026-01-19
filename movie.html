@@ -1,34 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Movie Details</title>
-
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <title>Movie Details</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<div class="details">
-  <img id="poster">
-  <h1 id="title"></h1>
-  <p id="category"></p>
-  <p id="rating"></p>
-  <p id="desc"></p>
+  <div style="padding:20px;text-align:center">
+    <img id="poster" style="width:220px;border-radius:15px" />
+    <h1 id="title"></h1>
+    <p id="category"></p>
+    <p>⭐ <span id="rating"></span></p>
+    <p id="desc"></p>
 
-  <a id="trailer" target="_blank">▶ Watch Trailer</a>
-</div>
+    <a id="trailer" target="_blank">
+      <button style="
+        margin-top:15px;
+        padding:12px 20px;
+        border:none;
+        border-radius:25px;
+        background:red;
+        color:white;
+        font-size:16px;
+      ">
+        ▶ Watch Trailer
+      </button>
+    </a>
+  </div>
 
-<script>
-const params = new URLSearchParams(window.location.search);
-
-document.getElementById("poster").src = params.get("img");
-document.getElementById("title").innerText = params.get("title");
-document.getElementById("category").innerText = "Category: " + params.get("category");
-document.getElementById("rating").innerText = "⭐ Rating: " + params.get("rating");
-document.getElementById("desc").innerText = params.get("desc");
-document.getElementById("trailer").href = params.get("trailer");
-</script>
+  <script>
+    const p = new URLSearchParams(window.location.search);
+    document.getElementById("title").innerText = p.get("title");
+    document.getElementById("poster").src = p.get("poster");
+    document.getElementById("rating").innerText = p.get("rating");
+    document.getElementById("category").innerText = "Category: " + p.get("category");
+    document.getElementById("desc").innerText = p.get("desc");
+    document.getElementById("trailer").href = p.get("trailer");
+  </script>
 
 </body>
 </html>
