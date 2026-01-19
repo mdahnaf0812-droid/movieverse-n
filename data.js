@@ -1,18 +1,18 @@
 const movies = [
   {
-    title: "Spider-Man",
-    poster: "https://upload.wikimedia.org/wikipedia/en/f/f3/Spider-Man_Homecoming_poster.jpg",
-    rating: 4.7,
-    category: "Movie",
-    desc: "Peter Parker balances high school life with being Spider-Man.",
-    trailer: "https://www.youtube.com/watch?v=n9DwoQ7HWvI"
+    title:"Avengers",
+    poster:"https://image.tmdb.org/t/p/w500/RYMX2wcKCBAr24UyPD7xwmjaTn.jpg",
+    rating:4.8,
+    category:"Movie",
+    desc:"Earth's mightiest heroes must unite to stop a global threat.",
+    trailer:"https://www.youtube.com/watch?v=eOrNdBpGMv8"
   },
   {
-    title: "Avengers",
-    poster: "https://upload.wikimedia.org/wikipedia/en/f/f9/TheAvengers2012Poster.jpg",
-    rating: 4.8,
-    category: "Movie",
-    desc: "Earth's mightiest heroes must come together to save the world.",
-    trailer: "https://www.youtube.com/watch?v=eOrNdBpGMv8"
+    title:"Spider-Man",
+    poster:"https://image.tmdb.org/t/p/w500/c24sv2weTHPsmDa7jEMN0m2P3RT.jpg",
+    rating:4.7,
+    category:"Movie",
+    desc:"Peter Parker balances life as a student and superhero.",
+    trailer:"https://www.youtube.com/watch?v=n9DwoQ7HWvI"
   }
 ];
