@@ -6,35 +6,34 @@
 }
 
 body {
-  background: radial-gradient(circle at top, #0f1b3d, #000);
-  color: #fff;
+  background: linear-gradient(135deg, #020824, #020b3f);
+  color: white;
   min-height: 100vh;
 }
 
-/* ===== Header ===== */
-.top-bar {
-  padding: 15px;
+.header {
   text-align: center;
-  background: rgba(0,0,0,0.4);
-  backdrop-filter: blur(6px);
-}
-
-.top-bar h1 {
-  margin-bottom: 10px;
+  padding: 20px;
   font-size: 22px;
+  font-weight: bold;
 }
 
-.top-bar input {
-  width: 90%;
-  max-width: 400px;
-  padding: 12px;
+.search-box {
+  display: flex;
+  justify-content: center;
+  padding: 10px 20px;
+}
+
+.search-box input {
+  width: 100%;
+  max-width: 500px;
+  padding: 12px 15px;
   border-radius: 25px;
   border: none;
   outline: none;
-  font-size: 16px;
+  font-size: 15px;
 }
 
-/* ===== Movie Grid ===== */
 .movie-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
@@ -42,33 +41,34 @@ body {
   padding: 20px;
 }
 
-/* ===== Movie Card ===== */
-.movie-card {
-  background: rgba(255,255,255,0.05);
+.card {
+  background: #0b144a;
   border-radius: 12px;
   overflow: hidden;
-  text-decoration: none;
-  color: #fff;
-  transition: transform 0.3s;
+  cursor: pointer;
+  transition: transform 0.2s;
 }
 
-.movie-card:hover {
+.card:hover {
   transform: scale(1.05);
 }
 
-.movie-card img {
+.card img {
   width: 100%;
   height: 220px;
   object-fit: cover;
 }
 
-.movie-card h3 {
-  font-size: 15px;
-  padding: 8px;
+.card .info {
+  padding: 10px;
 }
 
-.movie-card p {
-  font-size: 13px;
-  padding: 0 8px 10px;
-  color: gold;
+.card h3 {
+  font-size: 15px;
+  margin-bottom: 5px;
+}
+
+.card p {
+  font-size: 12px;
+  opacity: 0.8;
 }
