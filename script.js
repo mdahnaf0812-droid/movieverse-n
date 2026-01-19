@@ -7,11 +7,7 @@ function showMovies(list) {
     const card = document.createElement("div");
     card.className = "card";
     card.innerHTML = `
-      <img src="${m.poster}" />
-      <div class="info">
-        <h3>${m.title}</h3>
-        <p>⭐ ${m.rating}</p>
-      </div>
+      <img src="${m.poster}" onerror="this.src='https://via.placeholder.com/300x450?text=No+Image'" />
     `;
     card.onclick = () => {
       const url =
