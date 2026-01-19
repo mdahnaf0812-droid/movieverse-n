@@ -1,44 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Movie Details</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <div style="padding:20px;text-align:center">
-    <img id="poster" style="width:220px;border-radius:15px" />
-    <h1 id="title"></h1>
-    <p id="category"></p>
-    <p>⭐ <span id="rating"></span></p>
-    <p id="desc"></p>
+<div class="container">
+  <img id="poster" style="width:100%;border-radius:12px;">
+  <h1 id="title"></h1>
+  <p id="category"></p>
+  <p id="desc"></p>
+  <a id="trailer" target="_blank">▶ Watch Trailer</a>
+</div>
 
-    <a id="trailer" target="_blank">
-      <button style="
-        margin-top:15px;
-        padding:12px 20px;
-        border:none;
-        border-radius:25px;
-        background:red;
-        color:white;
-        font-size:16px;
-      ">
-        ▶ Watch Trailer
-      </button>
-    </a>
-  </div>
-
-  <script>
-    const p = new URLSearchParams(window.location.search);
-    document.getElementById("title").innerText = p.get("title");
-    document.getElementById("poster").src = p.get("poster");
-    document.getElementById("rating").innerText = p.get("rating");
-    document.getElementById("category").innerText = "Category: " + p.get("category");
-    document.getElementById("desc").innerText = p.get("desc");
-    document.getElementById("trailer").href = p.get("trailer");
-  </script>
+<script>
+const p = new URLSearchParams(location.search);
+document.getElementById("title").innerText = p.get("title");
+document.getElementById("poster").src = p.get("poster");
+document.getElementById("category").innerText = "⭐ " + p.get("rating");
+document.getElementById("desc").innerText = p.get("desc");
+document.getElementById("trailer").href = p.get("trailer");
+</script>
 
 </body>
 </html>
