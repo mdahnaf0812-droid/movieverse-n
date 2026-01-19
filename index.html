@@ -1,28 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Movie Hub</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <header class="header">
-    🎬 <span>Movie Hub</span>
-  </header>
+<header>
+  🎬 Movie Hub
+  <input type="text" id="search" placeholder="Search movie, series, cartoon...">
+</header>
 
-  <div class="search-box">
-    <input
-      type="text"
-      id="searchInput"
-      placeholder="Search movie, series, cartoon..."
-    />
-  </div>
+<div class="container" id="movieList"></div>
 
-  <div id="movieGrid" class="movie-grid"></div>
+<script src="data.js"></script>
+<script>
+const list = document.getElementById("movieList");
+const search = document.getElementById("search");
 
-  <script src="data.js"></script>
-  <script src="script.js"></script>
+function showMovies(data){
+  list.innerHTML = "";
+  data.forEach(m=>{
+    list.innerHTML += `
+      <a class="card" href="movie.html?title=${encodeURIComponent(m.title)}&poster=${encodeURIComponent(m.poster)}&rating=${m.rating}&category=${m.category}&desc=${encodeURIComponent(m.desc)}&trailer=${encodeURIComponent(m.trailer)}">
+        <img src="${m.poster}">
+        <div class="info">
+          <h3>${m.title}</h3>
+          ⭐ ${m.rating}
+        </div>
+      </a>
+    `;
+  });
+}
+
+showMovies(movies);
+
+search.oninput = ()=>{
+  const v = search.value.toLowerCase();
+  showMovies(movies.filter(m=>m.title.toLowerCase().includes(v)));
+};
+</script>
+
 </body>
 </html>
