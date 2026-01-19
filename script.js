@@ -13,9 +13,9 @@ const movies = [
 
 const movieList = document.getElementById("movieList");
 
-function loadMovies(list){
+if(movieList){
   movieList.innerHTML = "";
-  list.forEach(movie => {
+  movies.forEach(movie => {
     movieList.innerHTML += `
       <div class="card">
         <img src="${movie.poster}">
@@ -26,12 +26,6 @@ function loadMovies(list){
       </div>
     `;
   });
+}else{
+  console.error("movieList div not found");
 }
-
-loadMovies(movies);
-
-document.getElementById("searchInput").addEventListener("input", e => {
-  const value = e.target.value.toLowerCase();
-  const filtered = movies.filter(m => m.title.toLowerCase().includes(value));
-  loadMovies(filtered);
-});
