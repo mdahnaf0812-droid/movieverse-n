@@ -1,35 +1,42 @@
-const movieList = document.getElementById("movieList");
-
-console.log("JS Loaded", movieList);
-
 const movies = [
   {
     title: "Avengers Endgame",
-    rating: "⭐ 4.8",
-    image: "https://image.tmdb.org/t/p/w500/or06FN3Dka5tukK1e9sl16pB3iy.jpg"
+    poster: "https://i.imgur.com/8hP4Q2D.jpg",
+    rating: "4.8",
+    desc: "Earth’s mightiest heroes must come together to stop Thanos.",
+    trailer: "https://www.youtube.com/watch?v=TcMBFSGVi1c"
   },
   {
     title: "Spider-Man",
-    rating: "⭐ 4.7",
-    image: "https://image.tmdb.org/t/p/w500/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg"
+    poster: "https://i.imgur.com/JHjZ9Qy.jpg",
+    rating: "4.7",
+    desc: "Peter Parker balances high school life with being Spider-Man.",
+    trailer: "https://www.youtube.com/watch?v=Nt9L1jCKGnE"
   }
 ];
 
-if (!movieList) {
-  alert("movieList NOT FOUND");
-}
+const movieList = document.getElementById("movieList");
 
 movies.forEach(movie => {
   const card = document.createElement("div");
-  card.className = "card";
+  card.className = "movie-card";
 
   card.innerHTML = `
-    <img src="${movie.image}">
-    <div class="overlay">
-      <h3>${movie.title}</h3>
-      <span>${movie.rating}</span>
-    </div>
+    <img src="${movie.poster}">
+    <h4>${movie.title}</h4>
+    <p>⭐ ${movie.rating}</p>
   `;
+
+  card.onclick = () => {
+    const url =
+      `movie.html?title=${encodeURIComponent(movie.title)}` +
+      `&poster=${encodeURIComponent(movie.poster)}` +
+      `&rating=${movie.rating}` +
+      `&desc=${encodeURIComponent(movie.desc)}` +
+      `&trailer=${encodeURIComponent(movie.trailer)}`;
+
+    window.location.href = url;
+  };
 
   movieList.appendChild(card);
 });
