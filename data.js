@@ -1,18 +1,18 @@
 const movies = [
   {
     title: "Spider-Man",
-    poster: "https://m.media-amazon.com/images/I/81rEhhwbubL._AC_SY679_.jpg",
-    rating: "4.7",
+    poster: "https://upload.wikimedia.org/wikipedia/en/f/f3/Spider-Man_Homecoming_poster.jpg",
+    rating: 4.7,
     category: "Movie",
-    desc: "A young hero learns responsibility with great power.",
-    trailer: "https://www.youtube.com/watch?v=t06RUxPbp_c"
+    desc: "Peter Parker balances high school life with being Spider-Man.",
+    trailer: "https://www.youtube.com/watch?v=n9DwoQ7HWvI"
   },
   {
-    title: "Avengers Endgame",
-    poster: "https://m.media-amazon.com/images/I/81ExhpBEbHL._AC_SY679_.jpg",
-    rating: "4.8",
+    title: "Avengers",
+    poster: "https://upload.wikimedia.org/wikipedia/en/f/f9/TheAvengers2012Poster.jpg",
+    rating: 4.8,
     category: "Movie",
-    desc: "Earth’s mightiest heroes unite for one final battle.",
-    trailer: "https://www.youtube.com/watch?v=TcMBFSGVi1c"
+    desc: "Earth's mightiest heroes must come together to save the world.",
+    trailer: "https://www.youtube.com/watch?v=eOrNdBpGMv8"
   }
 ];
