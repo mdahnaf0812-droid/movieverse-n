@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Movie Details</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="details">
+  <img id="poster">
+  <h1 id="title"></h1>
+  <p id="category"></p>
+  <p id="rating"></p>
+  <p id="desc"></p>
+
+  <a id="trailer" target="_blank">▶ Watch Trailer</a>
+</div>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+
+document.getElementById("poster").src = params.get("img");
+document.getElementById("title").innerText = params.get("title");
+document.getElementById("category").innerText = "Category: " + params.get("category");
+document.getElementById("rating").innerText = "⭐ Rating: " + params.get("rating");
+document.getElementById("desc").innerText = params.get("desc");
+document.getElementById("trailer").href = params.get("trailer");
+</script>
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MovieVerse</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>🎬 MovieVerse</h1>
+  <input type="text" placeholder="Search movies, series, anime...">
+</header>
+
+<div class="categories">
+  <button>All</button>
+  <button>Movie</button>
+  <button>Series</button>
+  <button>Cartoon</button>
+  <button>Anime</button>
+</div>
+
+<!-- MOVIE SHOW AREA -->
+<div id="movieGrid" class="grid"></div>
+
+<script src="data.js"></script>
+
+<script>
+const grid = document.getElementById("movieGrid");
+
+data.forEach(item => {
+  grid.innerHTML += `
+    <a class="card" href="movie.html?title=${encodeURIComponent(item.title)}
+    &img=${encodeURIComponent(item.img)}
+    &rating=${item.rating}
+    &category=${item.category}
+    &desc=${encodeURIComponent(item.desc)}
+    &trailer=${encodeURIComponent(item.trailer)}">
+      
+      <img src="${item.img}">
+      <h3>${item.title}</h3>
+      <p>⭐ ${item.rating}</p>
+    </a>
+  `;
+});
+</script>
+
+</body>
+</html>
